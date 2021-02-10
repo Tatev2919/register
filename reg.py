@@ -1,4 +1,4 @@
-import re
+
 
 users = {1: {"userName": 'John', 'passwd': 'johnjames97'},
          2: {'userName': 'Jane', 'passwd': 'jane9815'}};
@@ -13,10 +13,14 @@ while (re.match(r'[A-Za-z0-9@#$%^&+=]{5,}', passwd) == None):
 changeVal = 0
 
 regOrLog = input("Registration or Login ? // if registration then type 0 ,else 1 ")
-print("enter 0 or 1")
 while(regOrLog not in ('0','1')):
+    print("enter 0 or 1")
     regOrLog = input("Registration or Login ? // if registration then type 0 ,else 1 ")
-
+maxVal = 0
+for m in users.keys():
+     if (m > maxVal):
+         maxVal = m;
+print(maxVal)
 if regOrLog == '1':
     flag = False
     for key in users.keys():
@@ -29,16 +33,17 @@ if regOrLog == '1':
                 break
     if (flag == False):
         print("Maybe you've enter wrong userName or passwd.Can I register you as new user ?")
-        changeVal = input("enter yes or no ? ")
+        changeVal = input("enter yes or no ? ").strip()
         while (changeVal not in ('yes', 'no')):
             print("your input is not correct")
-            changeVal = input("enter yes or no ? ")
+            changeVal = input("enter yes or no ? ").strip()
         if (changeVal == "yes"):
             regOrLog = '0'
         if (changeVal == "no"):
             print("Byee!")
 if regOrLog == '0':
     user1 = dict({'userName': name, 'passwd': passwd});
-    users['4'] = (dict(user1))
+    users[maxVal+1] = (dict(user1))
     for key1 in users.keys():
         print(users[key1])
+    print("You've successfully registered")
