@@ -1,6 +1,6 @@
 import re
 
-users = [{"userName": 'John', 'passwd': 'johnjames97'}, {'userName': 'Jane', 'passwd': 'jane98'}];
+users = [{"userName": 'John', 'passwd': 'johnjames97'}, {'userName': 'Jane', 'passwd': 'jane9815'}];
 
 name = input("Type your name")
 while (re.match("^[ a-zA-Z0-9_.-]+$", name) == None):
@@ -12,7 +12,6 @@ while (re.match(r'[A-Za-z0-9@#$%^&+=]{5,}', passwd) == None):
 changeVal = 0
 #flag = False
 regOrLog = input("Registration or Login ? // if registration then type 0 ,else 1 ")
-print(regOrLog)
 if regOrLog == '1':
     flag = False
     for i in users:
@@ -21,7 +20,6 @@ if regOrLog == '1':
                 print("Congrats you've logged successfully!!")
                 flag = True
                 break
-    print(flag)
     if (flag == False):
         print("Maybe you've enter wrong userName or passwd.Can I register you as new user ?")
         changeVal = input("enter yes or no ? ")
@@ -35,4 +33,4 @@ if regOrLog == '1':
 if regOrLog == '0':
     user1 = dict({'userName': name, 'passwd': passwd});
     users.append(dict(user1))
-    [print(key, ':', value) for key, value in user1.items()]
+    print(users)
